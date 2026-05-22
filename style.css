@@ -10,16 +10,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
     background: linear-gradient(to bottom, #bfdbfe, #eff6ff);
 }
 
 .game-card {
-    width: 450px;
+    width: 460px;
     background: white;
     padding: 34px;
     border-radius: 28px;
     text-align: center;
+
     box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
@@ -56,7 +56,16 @@ h1 {
 
 .subtitle {
     color: #64748b;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
+}
+
+.timer-box {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 12px;
+    border-radius: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .word-box {
@@ -93,7 +102,7 @@ input:focus {
 .button-group {
     display: flex;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 button {
@@ -110,6 +119,17 @@ button {
 
 button:hover {
     background: #1d4ed8;
+}
+
+#restartBtn {
+    background: #0f172a;
+    width: 100%;
+    margin-bottom: 18px;
+    display: none;
+}
+
+#restartBtn:hover {
+    background: #020617;
 }
 
 .message {
