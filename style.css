@@ -6,36 +6,47 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    
     height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(to bottom, #dbeafe, #eff6ff);
+    background: linear-gradient(to bottom, #bfdbfe, #eff6ff);
 }
 
 .game-card {
-    width: 430px;
+    width: 450px;
     background: white;
     padding: 34px;
-
     border-radius: 28px;
     text-align: center;
-
     box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
-.top-badge {
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
 
+.top-badge {
     display: inline-block;
     padding: 8px 14px;
     border-radius: 999px;
     background: #dbeafe;
     color: #2563eb;
     font-size: 14px;
-    margin-bottom: 18px;
+}
+
+#hintBtn {
+    width: auto;
+    padding: 10px 16px;
+    background: #f59e0b;
+}
+
+#hintBtn:hover {
+    background: #d97706;
 }
 
 h1 {
@@ -56,7 +67,13 @@ h1 {
     font-size: 30px;
     font-weight: bold;
     letter-spacing: 4px;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
+}
+
+.hint-text {
+    color: #475569;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 
 input {
@@ -100,6 +117,7 @@ button:hover {
     color: #334155;
     min-height: 24px;
     margin-bottom: 18px;
+    font-size: 18px;
 }
 
 .stats {

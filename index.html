@@ -10,26 +10,42 @@
 
     <div class="game-card">
 
-        <div class="top-badge">
-            Word Puzzle
+        <div class="top-section">
+
+            <div class="top-badge">
+                Word Puzzle
+            </div>
+
+            <button id="hintBtn">Hint</button>
         </div>
 
         <h1>Word Scramble</h1>
 
-        <p class="subtitle">Unscramble the hidden word</p>
+        <p class="subtitle">
+            Unscramble the hidden word
+        </p>
 
-        <div class="word-box">RACETSIPVJA</div>
+        <div class="word-box">
+            RACETSIPVJA
+        </div>
 
-        <input type="text" id="guessInput" placeholder="Enter correct word">
+        <div class="hint-text">
+            Hint: ---
+        </div>
+
+        <input
+            type="text" id="guessInput" placeholder="Enter correct word"
+        >
 
         <div class="button-group">
 
             <button id="checkBtn">Check Answer</button>
             <button id="nextBtn">Next Word</button>
-
         </div>
 
-        <div class="message">Start Guessing...</div>
+        <div class="message">
+            Start guessing...
+        </div>
 
         <div class="stats">
 
@@ -37,12 +53,13 @@
                 Score: 0
             </div>
 
-            <div class="lives">Lives: 3</div>
+            <div class="lives">
+                Lives: 3
+            </div>
+
         </div>
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
-
