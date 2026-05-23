@@ -11,7 +11,7 @@ The game includes multiple difficulty levels...score tracking, and both challeng
 - Theres multiple categories according to your interest 
 - also theres diffuclty mode so you dont think yourself god after solving easy one! hahaaha
 - Countdown timer also has been added to make it spicy
-- In total 3 lives are given ( each of 15 second)
+- In total 3 lives are given 
 - Score tracking is given 
 - Best score means player’s highest score.
 - Hint feature helps you by revealing the starting letter
@@ -46,3 +46,7 @@ The game includes multiple difficulty levels...score tracking, and both challeng
 8. Use the restart button to play again.
 
 # screenshot
+
+<img width="1361" height="630" alt="Screenshot 2026-05-23 214918" src="https://github.com/user-attachments/assets/70aebec9-351f-41fd-bf30-69b69536e2d5" />
+
+<img width="1356" height="631" alt="image" src="https://github.com/user-attachments/assets/75bfe30a-f1fd-4ff6-bf5c-8670076a113d" />
