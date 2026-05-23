@@ -10,18 +10,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #0f172a, #020617);
+    background: linear-gradient(to bottom, #2e4883, #a0a3af);
     overflow: hidden;
 }
 
 .game-card {
     width: 500px;
-    background: #111827;
+    background: #5f79b0;
     padding: 36px;
     border-radius: 30px;
     text-align: center;
-    border: 1px solid #1e293b;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    border: 1px solid #1f3b1e;
+    box-shadow: 0 15px 40px rgba(185, 17, 17, 0.4);
     animation: fadeIn 0.5s ease;
 }
 
@@ -62,7 +62,7 @@ select {
     padding: 10px;
     border-radius: 10px;
     border: none;
-    background: #1e293b;
+    background: #0b47a8;
     color: white;
     outline: none;
 }
@@ -109,7 +109,7 @@ input {
     padding: 15px;
     border-radius: 12px;
     border: 1px solid #334155;
-    background: #0f172a;
+    background: #344877;
     color: white;
     font-size: 16px;
     outline: none;
