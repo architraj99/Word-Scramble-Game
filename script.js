@@ -55,6 +55,7 @@ function scrambleWord(word) {
         letters[i] = letters[randomIndex];
         letters[randomIndex] = temp;
     }
+
     return letters.join("");
 }
 
@@ -67,20 +68,35 @@ function startTimer() {
 
     countdown = setInterval(function () {
 
+            if (totalLives <= 0) {
+
+                clearInterval(countdown);
+                return;
+            }
+
             timeLeft--;
             timer.innerText = timeLeft;
 
             if (timeLeft <= 0) {
 
                 clearInterval(countdown);
-                totalLives--;
+
+                if (totalLives > 0) {
+
+                    totalLives--;
+                }
+
                 lives.innerText = "Lives: " + totalLives;
 
-                message.innerText = "⏰ Time Up!";
+                message.innerText = "Time Up!";
                 message.style.color = "#ef4444";
 
                 checkGameOver();
-                loadNewWord();
+
+                if (totalLives > 0) {
+
+                    loadNewWord();
+                }
             }
         }, 1000);
 }
@@ -112,6 +128,11 @@ function checkGameOver() {
 
     if (totalLives <= 0) {
 
+        totalLives = 0;
+
+        clearInterval(countdown);
+        lives.innerText = "Lives: 0";
+
         message.innerText = "Game Over!";
         message.style.color = "#ef4444";
 
@@ -125,7 +146,7 @@ function checkGameOver() {
 
 loadNewWord();
 
-checkBtn.addEventListener("click", function() {
+checkBtn.addEventListener("click", function () {
 
         let userGuess = guessInput.value.toLowerCase().trim();
 
@@ -136,7 +157,6 @@ checkBtn.addEventListener("click", function() {
         }
 
         if (userGuess === currentWord) {
-
             totalScore++;
 
             score.innerText = "Score: " + totalScore;
@@ -149,10 +169,13 @@ checkBtn.addEventListener("click", function() {
 
         else {
 
-            totalLives--;
+            if (totalLives > 0) {
+
+                totalLives--;
+            }
 
             lives.innerText = "Lives: " + totalLives;
-            message.innerText = "Wrong Guess!";
+            message.innerText = "Wrong Guess";
             message.style.color = "#ef4444";
 
             checkGameOver();
@@ -181,14 +204,14 @@ guessInput.addEventListener("keydown", function(event) {
 });
 
 restartBtn.addEventListener("click", function() {
-   
-    location.reload();
+
+    location.reload();   
 });
 
-difficulty.addEventListener("change", function() { 
-    loadNewWord();   
+difficulty.addEventListener("change", function() {
+    loadNewWord();    
 });
 
 category.addEventListener("change", function() {
-    loadNewWord();   
+    loadNewWord();
 });
