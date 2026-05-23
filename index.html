@@ -16,17 +16,35 @@
                 Word Puzzle
             </div>
 
-            <button id="hintBtn">Hint</button>
+            <div class="selectors">
+                
+                <select id="difficulty">
+                
+                    <option value="20">Easy</option>
+                    <option value="15" selected>Medium</option>
+                    <option value="10">Hard</option>
+                
+                </select>
+
+                <select id="category">
+
+                    <option value="tech">Tech</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="space">Space</option>
+                </select>
+
+            </div>
+
         </div>
 
         <h1>Word Scramble</h1>
 
         <p class="subtitle">
-            Unscramble the hidden word
+            Unscramble the hidden word before time runs out
         </p>
 
         <div class="timer-box">
-            Time Left: <span id="timer">20</span>s
+            Time Left: <span id="timer">15</span>s
         </div>
 
         <div class="word-box">
@@ -47,6 +65,8 @@
             <button id="nextBtn">Next Word</button>
         </div>
 
+        <button id="hintBtn">Show Hint</button>
+
         <button id="restartBtn">Restart Game</button>
 
         <div class="message">
@@ -61,6 +81,10 @@
 
             <div class="lives">
                 Lives: 3
+            </div>
+
+            <div class="best-score">
+                Best: 0
             </div>
 
         </div>
