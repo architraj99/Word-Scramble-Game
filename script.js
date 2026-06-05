@@ -5,8 +5,10 @@ let nextBtn = document.getElementById("nextBtn");
 let hintBtn = document.getElementById("hintBtn");
 let restartBtn = document.getElementById("restartBtn");
 let timer = document.getElementById("timer");
+
 let difficulty = document.getElementById("difficulty");
 let category = document.getElementById("category");
+
 let message = document.querySelector(".message");
 let score = document.querySelector(".score");
 let lives = document.querySelector(".lives");
@@ -15,21 +17,21 @@ let hintText = document.querySelector(".hint-text");
 
 let wordCategories = {
 
-    tech: [
+    tech:[
         "javascript",
         "computer",
         "browser",
         "developer"
     ],
 
-    gaming: [
+    gaming:[
         "minecraft",
         "roblox",
         "console",
         "controller"
     ],
 
-    space: [
+    space:[
         "galaxy",
         "planet",
         "rocket",
@@ -44,13 +46,14 @@ let best = 0;
 let timeLeft = 15;
 let countdown;
 
-function scrambleWord(word) {
+function scrambleWord(word){
 
     let letters = word.split("");
 
-    for (let i = letters.length - 1; i > 0; i--) {
+    for(let i = letters.length - 1; i > 0; i--){
 
-        let randomIndex = Math.floor(Math.random() * (i + 1) );
+        let randomIndex = Math.floor(Math.random() * (i + 1));
+
         let temp = letters[i];
         letters[i] = letters[randomIndex];
         letters[randomIndex] = temp;
@@ -59,159 +62,204 @@ function scrambleWord(word) {
     return letters.join("");
 }
 
-function startTimer() {
+function startTimer(){
 
     clearInterval(countdown);
 
     timeLeft = Number(difficulty.value);
     timer.innerText = timeLeft;
 
-    countdown = setInterval(function () {
+    countdown = setInterval(function(){
 
-            if (totalLives <= 0) {
+        timeLeft--;
+        timer.innerText = timeLeft;
 
-                clearInterval(countdown);
-                return;
-            }
+        if(timeLeft <= 0){
 
-            timeLeft--;
-            timer.innerText = timeLeft;
+            clearInterval(countdown);
 
-            if (timeLeft <= 0) {
+            totalLives--;
 
-                clearInterval(countdown);
+            lives.innerText = "Lives: " + totalLives;
 
-                if (totalLives > 0) {
+            message.innerText =
+                "Time Up! Answer was: " +
+                currentWord.toUpperCase();
 
-                    totalLives--;
-                }
+            message.style.color = "red";
 
-                lives.innerText = "Lives: " + totalLives;
+            checkGameOver();
 
-                message.innerText = "Time Up!";
-                message.style.color = "#ef4444";
+            if(totalLives > 0){
 
-                checkGameOver();
+                checkBtn.disabled = true;
+                nextBtn.disabled = true;
+                hintBtn.disabled = true;
 
-                if (totalLives > 0) {
+                setTimeout(function(){
+
+                    checkBtn.disabled = false;
+                    nextBtn.disabled = false;
+                    hintBtn.disabled = false;
 
                     loadNewWord();
-                }
+
+                }, 2000);
             }
-        }, 1000);
+        }
+
+    },1000);
 }
 
-function loadNewWord() {
+function loadNewWord(){
 
     let selectedCategory = category.value;
+
     let words = wordCategories[selectedCategory];
-    let randomWord = words[Math.floor(Math.random() * words.length) ];
+
+    let randomWord =
+        words[Math.floor(Math.random() * words.length)];
 
     currentWord = randomWord;
-    wordBox.innerText = scrambleWord(randomWord).toUpperCase();
-    hintText.innerText = "Hint: " + currentWord.charAt(0).toUpperCase();
+
+    wordBox.innerText =
+        scrambleWord(randomWord).toUpperCase();
+
+    hintText.innerText =
+        "Hint: " +
+        currentWord.charAt(0).toUpperCase();
+
     guessInput.value = "";
 
     startTimer();
 }
 
-function updateBestScore() {
+function updateBestScore(){
 
-    if (best === 0 || totalScore > best) {
+    if(best === 0 || totalScore > best){
 
         best = totalScore;
-        bestScore.innerText = "Best: " + best;
+
+        bestScore.innerText =
+            "Best: " + best;
     }
 }
 
-function checkGameOver() {
+function checkGameOver(){
 
-    if (totalLives <= 0) {
-
-        totalLives = 0;
+    if(totalLives <= 0){
 
         clearInterval(countdown);
-        lives.innerText = "Lives: 0";
 
-        message.innerText = "Game Over!";
-        message.style.color = "#ef4444";
+        message.innerText =
+            "Game Over! Answer was: " +
+            currentWord.toUpperCase();
+
+        message.style.color = "red";
 
         checkBtn.disabled = true;
         nextBtn.disabled = true;
         hintBtn.disabled = true;
         guessInput.disabled = true;
+
         restartBtn.style.display = "block";
     }
 }
 
 loadNewWord();
 
-checkBtn.addEventListener("click", function () {
+checkBtn.addEventListener("click", function(){
 
-        let userGuess = guessInput.value.toLowerCase().trim();
+    let userGuess =
+        guessInput.value.toLowerCase().trim();
 
-        if (!userGuess) {
+    if(!userGuess){
 
-            message.innerText = "Enter a word";
-            return;
-        }
-
-        if (userGuess === currentWord) {
-            totalScore++;
-
-            score.innerText = "Score: " + totalScore;
-            message.innerText = "Correct Word!";
-            message.style.color = "#22c55e";
-
-            updateBestScore();
-            loadNewWord();
-        }
-
-        else {
-
-            if (totalLives > 0) {
-
-                totalLives--;
-            }
-
-            lives.innerText = "Lives: " + totalLives;
-            message.innerText = "Wrong Guess";
-            message.style.color = "#ef4444";
-
-            checkGameOver();
-        }
-
-        guessInput.value = "";
+        message.innerText = "Enter a word";
+        return;
     }
-);
 
-nextBtn.addEventListener("click", function () {
+    if(userGuess === currentWord){
+
+        totalScore++;
+
+        score.innerText =
+            "Score: " + totalScore;
+
+        message.innerText = "Correct!";
+        message.style.color = "green";
+
+        updateBestScore();
+
+        loadNewWord();
+    }
+
+    else{
+
+        totalLives--;
+
+        lives.innerText =
+            "Lives: " + totalLives;
+
+        message.innerText =
+            "Wrong! Answer was: " +
+            currentWord.toUpperCase();
+
+        message.style.color = "red";
+
+        checkGameOver();
+
+        if(totalLives > 0){
+
+            checkBtn.disabled = true;
+            nextBtn.disabled = true;
+            hintBtn.disabled = true;
+
+            setTimeout(function(){
+
+                checkBtn.disabled = false;
+                nextBtn.disabled = false;
+                hintBtn.disabled = false;
+
+                loadNewWord();
+
+            }, 2000);
+        }
+    }
+
+    guessInput.value = "";
+});
+
+nextBtn.addEventListener("click", function(){
 
     loadNewWord();
 });
 
-hintBtn.addEventListener("click", function () {
+hintBtn.addEventListener("click", function(){
 
-    hintText.innerText = "Hint: Starts with '" + currentWord.charAt(0).toUpperCase() + "'";
+    hintText.innerText =
+        "Hint: Starts with " +
+        currentWord.charAt(0).toUpperCase();
 });
 
-guessInput.addEventListener("keydown", function(event) {
+guessInput.addEventListener("keydown", function(event){
 
-        if (event.key === "Enter") {
-
-            checkBtn.click();
-        }
+    if(event.key === "Enter"){
+        checkBtn.click();
+    }
 });
 
-restartBtn.addEventListener("click", function() {
+restartBtn.addEventListener("click", function(){
 
-    location.reload();   
+    location.reload();
 });
 
-difficulty.addEventListener("change", function() {
-    loadNewWord();    
+difficulty.addEventListener("change", function(){
+
+    loadNewWord();
 });
 
-category.addEventListener("change", function() {
+category.addEventListener("change", function(){
+
     loadNewWord();
 });
