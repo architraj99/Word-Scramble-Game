@@ -3,48 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Scramble Game</title>
+    <title>Word Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="game-card">
 
-        <div class="top-section">
+        <div class="game-name">
+            Word Game
+        </div>
 
-            <div class="top-badge">
-                Word Puzzle
-            </div>
+        <h1>Word Scramble Game</h1>
 
-            <div class="selectors">
-                
-                <select id="difficulty">
-                
-                    <option value="20">Easy</option>
-                    <option value="15" selected>Medium</option>
-                    <option value="10">Hard</option>
-                
-                </select>
+        <p class="subtitle">
+            Unscramble the word.
+        </p>
 
-                <select id="category">
+        <div class="settings">
 
-                    <option value="tech">Tech</option>
-                    <option value="gaming">Gaming</option>
-                    <option value="space">Space</option>
-                </select>
+            <select id="difficulty">
+                <option value="20">Easy</option>
+                <option value="15" selected>Medium</option>
+                <option value="10">Hard</option>
+            </select>
 
-            </div>
+            <select id="category">
+                <option value="tech">Tech</option>
+                <option value="gaming">Gaming</option>
+                <option value="space">Space</option>
+            </select>
 
         </div>
 
-        <h1>Word Scramble</h1>
-
-        <p class="subtitle">
-            Unscramble the hidden word before time runs out
-        </p>
-
         <div class="timer-box">
-            Time Left: <span id="timer">15</span>s
+            Time Left:
+            <span id="timer">15</span>
+            seconds
         </div>
 
         <div class="word-box">
@@ -56,18 +51,30 @@
         </div>
 
         <input
-            type="text" id="guessInput" placeholder="Enter correct word"
+            type="text"
+            id="guessInput"
+            placeholder="Enter word"
         >
 
         <div class="button-group">
 
-            <button id="checkBtn">Check Answer</button>
-            <button id="nextBtn">Next Word</button>
+            <button id="checkBtn">
+                Check
+            </button>
+
+            <button id="nextBtn">
+                Next
+            </button>
+
         </div>
 
-        <button id="hintBtn">Show Hint</button>
+        <button id="hintBtn">
+            Show Hint
+        </button>
 
-        <button id="restartBtn">Restart Game</button>
+        <button id="restartBtn">
+            Restart
+        </button>
 
         <div class="message">
             Start guessing...
@@ -88,8 +95,10 @@
             </div>
 
         </div>
+
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>
